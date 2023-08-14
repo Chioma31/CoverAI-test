@@ -6,14 +6,12 @@ import {
   BellIcon,
   CalendarIcon,
   ChartPieIcon,
-  Cog6ToothIcon,
   DocumentDuplicateIcon,
   FolderIcon,
   HomeIcon,
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: false },
@@ -95,9 +93,9 @@ export default function Example() {
                       />
                     </div>
                     <nav className="flex flex-1 flex-col">
-                      <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                      <ul  className="flex flex-1 flex-col gap-y-7">
                         <li>
-                          <ul role="list" className="-mx-2 space-y-1">
+                          <ul  className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
                                 <a
@@ -124,7 +122,7 @@ export default function Example() {
                         </li>
                         <li>
                           <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
-                          <ul role="list" className="-mx-2 mt-2 space-y-1">
+                          <ul  className="-mx-2 mt-2 space-y-1">
                             {teams.map((team) => (
                               <li key={team.name}>
                                 <a
@@ -174,9 +172,9 @@ export default function Example() {
               />
             </div>
             <nav className="flex flex-1 flex-col">
-              <ul role="list" className="flex flex-1 flex-col justify-between">
+              <ul  className="flex flex-1 flex-col justify-between">
                 <li>
-                  <ul role="list" className="-mx-2 space-y-1">
+                  <ul  className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
                         <a
@@ -202,7 +200,7 @@ export default function Example() {
                   </ul>
                 </li>
                 <li>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
+                  <ul  className="-mx-2 mt-2 space-y-1">
                     {teams.map((team) => (
                       <li key={team.name}>
                         <a
@@ -260,7 +258,7 @@ export default function Example() {
                 <div className="flex items-center gap-x-4 lg:gap-x-6 text-[#3F4E72]">
                   <div className='flex gap-2 items-center'>
                     <div>Credit left:</div>
-                    <div className='flex'>10 <img src='money.svg'/></div>
+                    <div className='flex'>10 <img src='money.svg' alt='money icon'/></div>
                     <button className='bg-[#EEEFF0] text-[#3F4E72] px-2 py-1 rounded-full'>Free plan</button>
                   </div>
                   <button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
