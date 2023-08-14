@@ -4,32 +4,52 @@ import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
   BellIcon,
-  CalendarIcon,
-  ChartPieIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: false },
-  { name: 'Cover Letters', href: '#', icon: UsersIcon, current: true },
-  { name: 'CV/Resume', href: '#', icon: FolderIcon, current: false },
-  { name: 'Interview Prep', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Contacts', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Job Tracker', href: '#', icon: ChartPieIcon, current: false },
+  { name: 'Dashboard', href: '#', 
+    icon() { return (<img src="/dashboard.svg" alt='dashboard' className=" h-5 w-5" />); }, 
+    current: false 
+  },
+  { name: 'Cover Letters', href: '#', 
+  icon() { return (<img src="/cover.svg" alt='cover' className=" h-5 w-5" />); }, 
+  current: true 
+  },
+  { name: 'CV/Resume', href: '#', 
+  icon() { return (<img src="/cv.svg" alt='cv' className=" h-5 w-5" />); }, 
+  current: false 
+  },
+  { name: 'Interview Prep', href: '#', 
+  icon() { return (<img src="/Calendar.svg" alt='calender' className=" h-5 w-5" />); }, 
+  current: false 
+  },
+  { name: 'Contacts', href: '#', 
+  icon() { return (<img src="/contact.svg" alt='contact' className=" h-5 w-5" />); }, 
+  current: false 
+  },
+  { name: 'Job Tracker', href: '#', 
+  icon() { return (<img src="/time.svg" alt='time' className=" h-5 w-5" />); }, 
+  current: false 
+},
 ]
-const teams = [
-  { id: 1, name: 'Get Extension', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Refer & Earn', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Help & Support', href: '#', initial: 'W', current: false },
-  { id: 3, name: ' Log out', href: '#', initial: 'W', current: false },
-]
-const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
+const nav = [
+  { id: 1, name: 'Get Extension', href: '#',
+  icon() { return (<img src="/cover.svg" alt='cover' className=" h-5 w-5" />); }, 
+  current: false
+ },
+  { id: 2, name: 'Refer & Earn', href: '#', 
+  icon() { return (<img src="/box.svg" alt='box' className=" h-5 w-5" />); }, 
+  current: false 
+  },
+  { id: 3, name: 'Help & Support', href: '#', 
+  icon() { return (<img src="/Question.svg" alt='question' className=" h-5 w-5" />); }, 
+  current: false 
+  },
+  { id: 3, name: ' Log out', href: '#', 
+  icon() { return (<img src="/logout.svg" alt='logout' className=" h-5 w-5" />); }, 
+  current: false 
+},
 ]
 
 function classNames(...classes) {
@@ -83,23 +103,22 @@ export default function Example() {
                       </button>
                     </div>
                   </Transition.Child>
-                  {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-4">
                     <div className="flex h-16 shrink-0 items-center">
                       <img
                         className="h-8 w-auto"
                         src="/logo.svg"
-                        alt="Your Company"
+                        alt=" Company"
                       />
                     </div>
                     <nav className="flex flex-1 flex-col">
-                      <ul  className="flex flex-1 flex-col gap-y-7">
+                      <ul  className="flex flex-1 flex-col gap-40">
                         <li>
                           <ul  className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
                                 <a
-                                  href={item.href}
+                                  href={item.href}Your
                                   className={classNames(
                                     item.current
                                       ? 'bg-gray-50 text-[#664EDE]'
@@ -112,7 +131,6 @@ export default function Example() {
                                       item.current ? 'text-[#664EDE]' : 'text-gray-400 group-hover:text-[#664EDE]',
                                       'h-6 w-6 shrink-0'
                                     )}
-                                    aria-hidden="true"
                                   />
                                   {item.name}
                                 </a>
@@ -121,9 +139,8 @@ export default function Example() {
                           </ul>
                         </li>
                         <li>
-                          <div className="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
                           <ul  className="-mx-2 mt-2 space-y-1">
-                            {teams.map((team) => (
+                            {nav.map((team) => (
                               <li key={team.name}>
                                 <a
                                   href={team.href}
@@ -134,16 +151,12 @@ export default function Example() {
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                   )}
                                 >
-                                  <span
+                                  <team.icon
                                     className={classNames(
-                                      team.current
-                                        ? 'text-[#664EDE] border-[#664EDE]'
-                                        : 'text-gray-400 border-gray-200 group-hover:border-[#664EDE] group-hover:text-[#664EDE]',
-                                      'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
+                                      team.current ? 'text-[#664EDE]' : 'text-gray-400 group-hover:text-[#664EDE]',
+                                      'h-6 w-6 shrink-0'
                                     )}
-                                  >
-                                    {team.initial}
-                                  </span>
+                                  />
                                   <span className="truncate">{team.name}</span>
                                 </a>
                               </li>
@@ -162,13 +175,12 @@ export default function Example() {
 
         {/* Static sidebar for desktop */}
         <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
               <img
                 className="h-8 w-auto"
                 src="/logo.svg"
-                alt="Your Company"
+                alt=" Company"
               />
             </div>
             <nav className="flex flex-1 flex-col">
@@ -191,7 +203,6 @@ export default function Example() {
                               item.current ? 'text-[#664EDE]' : 'text-gray-400 group-hover:text-[#664EDE]',
                               'h-6 w-6 shrink-0'
                             )}
-                            aria-hidden="true"
                           />
                           {item.name}
                         </a>
@@ -201,7 +212,7 @@ export default function Example() {
                 </li>
                 <li>
                   <ul  className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
+                    {nav.map((team) => (
                       <li key={team.name}>
                         <a
                           href={team.href}
@@ -212,23 +223,19 @@ export default function Example() {
                             'group flex gap-x-3 rounded-md font-[400] text-[14px] p-2 text-sm leading-6'
                           )}
                         >
-                          <span
+                          <team.icon
                             className={classNames(
-                              team.current
-                                ? 'text-[#664EDE] border-[#664EDE]'
-                                : 'text-gray-400 border-gray-200 group-hover:border-[#664EDE] group-hover:text-[#664EDE]',
-                              'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
+                              team.current ? 'text-[#664EDE]' : 'text-gray-400 group-hover:text-[#664EDE]',
+                              'h-6 w-6 shrink-0'
                             )}
-                          >
-                            {team.initial}
-                          </span>
+                          />
+                          
                           <span className="truncate">{team.name}</span>
                         </a>
                       </li>
                     ))}
                   </ul>
                 </li>
-                
               </ul>
             </nav>
           </div>
@@ -246,7 +253,6 @@ export default function Example() {
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
 
-              {/* Separator */}
               <div className="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true" />
 
               <div className="flex flex-1 justify-between  lg:gap-x-6 items-center">
@@ -256,7 +262,7 @@ export default function Example() {
                   <div>Home</div>
                 </div>
                 <div className="flex items-center gap-x-4 lg:gap-x-6 text-[#3F4E72]">
-                  <div className='flex gap-2 items-center'>
+                  <div className=' hidden sm:flex gap-2 items-center'>
                     <div>Credit left:</div>
                     <div className='flex'>10 <img src='money.svg' alt='money icon'/></div>
                     <button className='bg-[#EEEFF0] text-[#3F4E72] px-2 py-1 rounded-full'>Free plan</button>
@@ -266,10 +272,8 @@ export default function Example() {
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
 
-                  {/* Separator */}
                   <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
 
-                  {/* Profile dropdown */}
                   <Menu as="div" className="relative">
                     <Menu.Button className="-m-1.5 flex items-center p-1.5">
                       <span className="sr-only">Open user menu</span>
@@ -278,35 +282,7 @@ export default function Example() {
                         src="/man.svg"
                         alt=""
                       />
-                      
                     </Menu.Button>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                        {userNavigation.map((item) => (
-                          <Menu.Item key={item.name}>
-                            {({ active }) => (
-                              <a
-                                href={item.href}
-                                className={classNames(
-                                  active ? 'bg-gray-50' : '',
-                                  'block px-3 py-1 text-sm leading-6 text-gray-900'
-                                )}
-                              >
-                                {item.name}
-                              </a>
-                            )}
-                          </Menu.Item>
-                        ))}
-                      </Menu.Items>
-                    </Transition>
                   </Menu>
                 </div>
               </div>
@@ -319,10 +295,10 @@ export default function Example() {
               <div className='font-[600] text-[30px] mb-2'>Hello, Chris!</div>
               <div className='font-[400] text-[14px]' >It’s time to land your next role. Let’s get to it!</div>
               <div className='border border-gray-100 bg-white shadow-sm mt-9 rounded-lg '>
-                <div className='flex justify-between p-5'>
-                  <div className='flex items-center gap-4'>
+                <div className='flex items-start justify-between p-5'>
+                  <div className='flex flex-col sm:flex-row sm:items-center gap-4'>
                     <div className='font-[500] text-[18px] '>Getting Started</div>
-                    <div className='bg-gray-200 px-2 py-[5px] text-[12px] rounded-md text-[#3F4E72]'>Step 1 out of 4</div>
+                    <div className='bg-gray-200 px-2 py-[5px] text-[12px] text-center rounded-md text-[#3F4E72]'>Step 1 out of 4</div>
                   </div>
                   <div className='flex items-center'>
                     <div className='px-[10px] text-[12px] text-white py-1 rounded-full bg-[#563BDB]'>1</div>
