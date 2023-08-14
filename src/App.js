@@ -121,7 +121,7 @@ export default function Example() {
                                   href={item.href}Your
                                   className={classNames(
                                     item.current
-                                      ? 'bg-gray-50 text-[#664EDE]'
+                                      ? 'bg-gray-50 text-[#664EDE] border-l-4 border-[#664EDE]'
                                       : 'text-gray-700 hover:text-[#664EDE] hover:bg-gray-50',
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                   )}
